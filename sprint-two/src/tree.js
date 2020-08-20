@@ -2,8 +2,7 @@ var Tree = function(value) {
   var newTree = {};
   newTree.value = value;
 
-  // your code here
-  newTree.children = []; // fix me
+  newTree.children = [];
   Object.assign(newTree, treeMethods);
   return newTree;
 };
@@ -15,8 +14,8 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
-  return this.children.reduce(function(accumulator, tree) {
-    return Boolean(accumulator === true || tree.contains(target));
+  return this.children.reduce(function(alreadyFound, tree) {
+    return Boolean(alreadyFound === true || tree.contains(target));
   }, this.value === target);
 };
 
