@@ -41,4 +41,10 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  it('should only contain values that had been added', function() {
+    tree.addChild(5);
+    tree.addChild(6);
+    expect(tree.contains(30)).to.equal(false);
+  });
+
 });

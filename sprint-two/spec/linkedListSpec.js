@@ -52,4 +52,9 @@ describe('linkedList', function() {
   });
 
   // add more tests here to test the functionality of linkedList
+  it('should have no more nodes after tail', function() {
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    expect(linkedList.tail.next).to.equal(null);
+  });
 });

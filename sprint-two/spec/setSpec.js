@@ -24,4 +24,10 @@ describe('set', function() {
     expect(set.contains('Mel Gibson')).to.equal(false);
   });
 
+  it('should not contain duplicates', function() {
+    set.add('Bingus Doodle');
+    set.add('Bingus Doodle');
+    expect(set._storage.length).to.equal(1);
+  });
+
 });

@@ -73,4 +73,11 @@ describe('hashTable', function() {
     hashTable.remove('Mr.');
     expect(hashTable._limit).to.equal(8);
   });
+
+  it ('should consistently return the same result', function() {
+    hashTable.insert('Bob', 'Joe');
+    var retrieveOne = hashTable.retrieve('Bob');
+    var retrieveTwo = hashTable.retrieve('Bob');
+    expect(retrieveOne).to.equal(retrieveTwo);
+  });
 });

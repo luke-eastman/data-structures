@@ -37,4 +37,15 @@ describe('binarySearchTree', function() {
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3, 7]);
   });
+
+  it('should have no duplicates', function() {
+    let bin = BinarySearchTree(2);
+    bin.insert(2);
+    let res = [];
+    let get = function(v) {
+      res.push(v);
+    };
+    bin.depthFirstLog(get);
+    expect(res.length).to.equal(1);
+  });
 });
