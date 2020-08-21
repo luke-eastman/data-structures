@@ -27,7 +27,8 @@ describe('set', function() {
   it('should not contain duplicates', function() {
     set.add('Bingus Doodle');
     set.add('Bingus Doodle');
-    expect(set._storage.length).to.equal(1);
+    var keys = Object.keys(set._storage);
+    expect(keys.length).to.equal(1);
   });
 
 });
