@@ -47,4 +47,27 @@ describe('tree', function() {
     expect(tree.contains(30)).to.equal(false);
   });
 
+  it('should refer to its parent', function() {
+    tree.addChild(5);
+    var child = tree.children[0];
+    expect(child.parent).to.equal(tree);
+  });
+
+  it('should detach from its parent after calling removeFromParent', function() {
+    tree.addChild(5);
+    tree.children[0].addChild(6);
+    tree.children[0].children[0].removeFromParent();
+    expect(tree.children[0].children.length).to.equal(0);
+  });
+
+  it('should call a function on each node when calling traverse', function() {
+    tree.value = 4;
+    tree.addChild(5);
+    tree.addChild(6);
+    tree.children[0].addChild(7);
+    tree.children[1].addChild(8);
+    let arr = [];
+    tree.traverse(v=> arr.push(v));
+    expect(arr).to.eql([4, 5, 7, 6, 8]);
+  });
 });

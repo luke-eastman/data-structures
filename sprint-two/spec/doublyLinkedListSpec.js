@@ -57,4 +57,17 @@ describe('doublyLinkedList', function() {
     doublyLinkedList.addToTail(5);
     expect(doublyLinkedList.tail.next).to.equal(null);
   });
+
+  it('should remove the tail from the list when removeTail is called', function() {
+    doublyLinkedList.addToTail(4);
+    doublyLinkedList.addToTail(5);
+    doublyLinkedList.removeTail();
+    expect(doublyLinkedList.tail.value).to.equal(4);
+  });
+
+  it('should add a new node to head when addToHead is called', function() {
+    doublyLinkedList.addToHead(4);
+    doublyLinkedList.addToHead(5);
+    expect(doublyLinkedList.head.value).to.equal(5);
+  });
 });

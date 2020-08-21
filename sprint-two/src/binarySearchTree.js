@@ -48,6 +48,24 @@ var BinarySearchTree = function(value) {
     }
   };
 
+  obj.breadthFirstLog = function(cb) {
+    cb(obj.value);
+    var leftAndRight = function(tree) {
+      if (tree === null) {
+        return;
+      }
+      if (tree.left !== null) {
+        cb(tree.left.value);
+      }
+      if (tree.right !== null) {
+        cb(tree.right.value);
+      }
+      leftAndRight(tree.left);
+      leftAndRight(tree.right);
+    };
+    leftAndRight(obj);
+  };
+
   return obj;
 };
 

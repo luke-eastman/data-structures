@@ -31,4 +31,29 @@ describe('set', function() {
     expect(keys.length).to.equal(1);
   });
 
+  it('should work with numbers', function() {
+    set.add(0);
+    expect(set.contains(0)).to.be.true;
+  });
+
+  it('should handle input of any type', function() {
+    let fn = (a, b)=> a % b;
+    set.add(fn);
+    expect(set.contains(fn)).to.be.true;
+  });
+
+  it('bloom filter is reasonably accurate', function() {
+    for (var i = 0; i < 18; i++) {
+      set.add(i);
+    }
+    var wrong = 0;
+    for (var i = 0; i < 10000; i++) {
+      var rand = Math.ceil(Math.random() * 100);
+      if (set.bloomFilter(rand) && !set.contains(rand)) {
+        wrong++;
+      }
+    }
+    var approximation = Math.pow(1 - Math.pow(Math.E, (-3 * 10000 / 18)), 3);
+    expect(wrong / 10000).to.be.at.most(approximation);
+  });
 });
